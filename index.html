@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BTEC Applied Science – Physics Practicals Write-up Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f2ec; --card:#ffffff; --ink:#1b2130; --muted:#5b6374; --line:#e1dccf; --soft:#f7f5f0;
+  --accent:#2f6fde; --accent-soft:#e9f0fd; --good:#1d8a4b; --good-soft:#e5f5ec; --bad:#c2410c; --bad-soft:#fdeee6;
+  --warn:#9a6700; --warn-soft:#fff6db;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:'Atkinson Hyperlegible',system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.2;margin:0 0 .5em}
+h2{font-size:1.55rem}
+h3{font-size:1.15rem;margin-top:1.2em}
+p{margin:.4em 0 .8em}
+a{color:var(--accent)}
+button{font:inherit;cursor:pointer}
+.top{background:var(--ink);color:#fff}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.brand .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#ffb547,#ff6b4a);display:grid;place-items:center;font-weight:800;font-family:'Bricolage Grotesque';color:#1b2130}
+.brand h1{font-size:1.2rem;margin:0}
+.brand small{display:block;opacity:.7;font-size:.82rem}
+.wrap{max-width:1180px;margin:0 auto;padding-left:20px;padding-right:20px}
+.exp-tabs{display:flex;gap:8px;overflow-x:auto;padding:14px 20px;max-width:1180px;margin:0 auto;scrollbar-width:thin}
+.exp-tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;white-space:nowrap;color:var(--ink);text-decoration:none;font-size:.93rem;display:flex;align-items:center;gap:7px}
+.exp-tab .dot{width:9px;height:9px;border-radius:50%}
+.exp-tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+main{padding-bottom:60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:860px){.layout{grid-template-columns:1fr}.stepnav{position:static!important}}
+.exp-head{border-radius:16px;padding:22px 24px;margin-bottom:20px;color:#fff;background:var(--accent);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.exp-head h2{font-size:1.8rem;margin:0}
+.exp-head p{margin:.3em 0 0;opacity:.92;max-width:640px}
+.eq{background:rgba(255,255,255,.18);border-radius:10px;padding:8px 14px;font-weight:700;font-size:1.05rem;white-space:nowrap}
+.stepnav{position:sticky;top:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+.stepnav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;padding:9px 10px;border-radius:10px;color:var(--ink)}
+.stepnav button:hover{background:var(--soft)}
+.stepnav button.active{background:var(--accent-soft);font-weight:700}
+.stepnav .num{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--soft);border:1px solid var(--line);font-size:.8rem;flex:none}
+.stepnav button.active .num{background:var(--accent);color:#fff;border-color:var(--accent)}
+.stepnav .prog{padding:10px;border-top:1px solid var(--line);margin-top:6px;font-size:.85rem;color:var(--muted)}
+.bar{height:8px;border-radius:99px;background:var(--soft);overflow:hidden;margin-top:6px;border:1px solid var(--line)}
+.bar>span{display:block;height:100%;background:var(--good);transition:width .3s}
+.guide{background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px 16px;border-radius:10px;margin:10px 0 14px}
+.guide h4{margin:0 0 4px;font-size:1rem}
+.guide ul{margin:.3em 0;padding-left:1.2em}
+.tip{background:var(--warn-soft);border-left:4px solid #e0a800;padding:10px 14px;border-radius:10px;margin:10px 0}
+.starter{font-style:italic;background:var(--soft);border:1px dashed var(--line);padding:8px 12px;border-radius:8px;margin:6px 0 10px}
+textarea{width:100%;min-height:120px;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;background:#fffefb;resize:vertical}
+textarea:focus,input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.field{margin-bottom:22px}
+.field label.lbl{font-weight:700;display:block;margin-bottom:4px}
+.row-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 14px;color:var(--ink)}
+.btn:hover{background:var(--soft)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{filter:brightness(.95)}
+.btn.small{padding:5px 10px;font-size:.88rem}
+.pager{display:flex;justify-content:space-between;margin-top:22px;gap:10px}
+.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+/* variables */
+.vars{width:100%;border-collapse:collapse;margin:10px 0}
+.vars td,.vars th{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+.vars select{font:inherit;padding:5px 8px;border-radius:8px;border:1px solid var(--line)}
+.vars tr.right td{background:var(--good-soft)}
+.vars tr.wrong td{background:var(--bad-soft)}
+.vars .why{font-size:.9rem;color:var(--muted);margin-top:4px}
+.key-defs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}
+@media (max-width:700px){.key-defs{grid-template-columns:1fr}}
+.key-defs div{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.92rem}
+.key-defs b{display:block}
+/* lists */
+.equip{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin:8px 0 16px}
+.equip div{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--soft)}
+.equip b{display:block}
+.equip span{font-size:.88rem;color:var(--muted)}
+.equip .extra{background:var(--warn-soft);border-color:#ecd48a}
+ol.method{padding-left:0;list-style:none;counter-reset:m}
+ol.method li{counter-increment:m;display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+ol.method li::before{content:counter(m);flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85rem}
+ol.method li.done{opacity:.55}
+ol.method li.done::before{content:'✓';background:var(--good)}
+ol.method li label{display:flex;gap:10px;cursor:pointer;flex:1}
+ol.method input{margin-top:5px}
+/* tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:10px 0}
+table.res{border-collapse:collapse;width:100%;min-width:560px;font-size:.93rem}
+table.res th,table.res td{border:1px solid var(--line);padding:0;text-align:center}
+table.res th{background:#eef0f4;padding:8px 6px;font-weight:700;vertical-align:bottom}
+table.res th.calc-h{background:#e6e3da}
+table.res th .u{display:block;font-weight:400;color:var(--muted);font-size:.85rem}
+table.res td.calc{background:#f3f1ea;padding:6px;color:#333;font-variant-numeric:tabular-nums}
+table.res input,table.res select{width:100%;border:0;padding:8px 6px;font:inherit;text-align:center;background:transparent;min-width:70px}
+table.res td.ctl{width:44px}
+table.res td.ctl button{border:0;background:none;color:var(--muted);padding:6px 10px;font-size:1.1rem}
+table.res td.ctl button:hover{color:var(--bad)}
+.risk{width:100%;border-collapse:collapse;font-size:.95rem}
+.risk th,.risk td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+.risk th{background:#eef0f4}
+.consts{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0;align-items:flex-end}
+.consts label{display:flex;flex-direction:column;font-size:.88rem;font-weight:700;gap:4px}
+.consts input,.consts select{font:inherit;padding:7px 9px;border-radius:8px;border:1px solid var(--line);min-width:150px;font-weight:400}
+.derived{background:#f3f1ea;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:.88rem}
+.derived span{display:block;color:var(--muted)}
+.legend{display:flex;gap:14px;font-size:.85rem;color:var(--muted);flex-wrap:wrap;align-items:center}
+.legend i{display:inline-block;width:14px;height:14px;border:1px solid var(--line);vertical-align:-2px;margin-right:4px;border-radius:3px}
+.tbl-block{margin-bottom:28px}
+/* analysis */
+.chart{width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px}
+.resultgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.stat{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--soft)}
+.stat span{display:block;font-size:.82rem;color:var(--muted)}
+.stat b{font-size:1.2rem;font-family:'Bricolage Grotesque'}
+.stat.hl{background:var(--accent-soft);border-color:var(--accent)}
+ol.steps-list li{margin-bottom:8px}
+.formula{font-family:'Bricolage Grotesque';font-weight:700;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:2px 8px;white-space:nowrap}
+/* checklist */
+.checklist label{display:flex;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;cursor:pointer;background:#fff}
+.checklist label.on{background:var(--good-soft);border-color:#9fd6b5}
+.checklist input{margin-top:4px;width:18px;height:18px}
+.checklist small{display:block;color:var(--muted)}
+/* home */
+.hero{padding:30px 0 10px}
+.hero h2{font-size:2.1rem;max-width:800px}
+.grid6{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin:20px 0 30px}
+.expcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:6px;border-top:6px solid var(--c);transition:transform .15s, box-shadow .15s}
+.expcard:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.expcard h3{margin:0}
+.expcard .meta{font-size:.88rem;color:var(--muted)}
+.structure{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.structure div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.structure b{display:block;font-family:'Bricolage Grotesque'}
+.structure span{font-size:.9rem;color:var(--muted)}
+.matrix{border-collapse:collapse;width:100%;font-size:.88rem;background:#fff}
+.matrix th,.matrix td{border:1px solid var(--line);padding:6px 8px;text-align:center}
+.matrix th:first-child,.matrix td:first-child{text-align:left}
+.matrix thead th{background:#eef0f4;font-size:.8rem}
+.matrix td.y{color:var(--good);font-weight:700}
+.matrix tr.extra td:first-child{color:var(--warn)}
+/* toast & modal */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50}
+.toast.show{opacity:1}
+.modal{position:fixed;inset:0;background:rgba(20,24,35,.5);display:none;place-items:center;z-index:60;padding:20px}
+.modal.show{display:grid}
+.modal .box{background:#fff;border-radius:16px;padding:20px;max-width:760px;width:100%}
+.modal textarea{min-height:340px;font-family:ui-monospace,Consolas,monospace;font-size:.85rem}
+.foot{text-align:center;color:var(--muted);font-size:.85rem;padding:20px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#overview"><div class="logo">Ph</div><div><h1>Physics Practicals: Write-up Guide</h1><small>BTEC Applied Science · plan, record, analyse, evaluate</small></div></a>
+    <div class="muted" style="color:#c9cfdb;font-size:.85rem">Your work saves in this browser automatically</div>
+  </div>
+</header>
+<nav class="exp-tabs" id="tabs"></nav>
+<main class="wrap" id="app"></main>
+<div class="foot">Use <b>Copy my write-up</b> on the checklist page to paste everything into Word. Copy results tables straight into Excel.</div>
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal"><div class="box"><h3 style="margin-top:0">Copy this text</h3><p class="muted">Your browser blocked automatic copying. Click in the box, press <b>Ctrl+A</b> then <b>Ctrl+C</b> (⌘ on Mac).</p><textarea id="modalText" readonly></textarea><div class="row-btns"><button class="btn primary" id="modalClose">Close</button></div></div></div>
+
+<script>
+/* ============ helpers ============ */
+const G = 9.81;
+const N = v => { if (v === '' || v == null) return NaN; const n = +String(v).replace(',', '.'); return isNaN(n) ? NaN : n; };
+const mean = a => { const f = a.filter(x => isFinite(x)); return f.length ? f.reduce((s, x) => s + x, 0) / f.length : NaN; };
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const SUP = {'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','-':'⁻'};
+const sup = n => String(n).split('').map(c => SUP[c] || c).join('');
+function sci(v, sf = 3){ if(!isFinite(v)) return ''; if(v===0) return '0'; const e = Math.floor(Math.log10(Math.abs(v))); let m = v / 10**e; let ms = m.toFixed(sf-1); if (Math.abs(+ms) >= 10){ return (m/10).toFixed(sf-1) + ' × 10' + sup(e+1); } return ms + ' × 10' + sup(e); }
+function fmt(v, dp = 2){ if (v === undefined || v === null || (typeof v === 'number' && !isFinite(v))) return ''; if (typeof v !== 'number') return esc(v); const a = Math.abs(v); if (a !== 0 && (a >= 1e5 || a < 1e-3)) return sci(v, 3); return v.toFixed(dp); }
+function sig(v, s = 3){ if(!isFinite(v)) return '–'; const a = Math.abs(v); if (a !== 0 && (a >= 1e5 || a < 1e-3)) return sci(v, s); return (+v.toPrecision(s)).toString(); }
+function toast(t){ const el = document.getElementById('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove('show'), 2200); }
+async function copyText(t){ try { await navigator.clipboard.writeText(t); toast('Copied – now paste it into Word or Excel'); } catch(e){ const m = document.getElementById('modal'); document.getElementById('modalText').value = t; m.classList.add('show'); setTimeout(()=>document.getElementById('modalText').select(),50); } }
+document.getElementById('modalClose').onclick = () => document.getElementById('modal').classList.remove('show');
+
+/* ============ experiment content ============ */
+const EXPS = [
+/* ---------------- HOOKE'S LAW ---------------- */
+{
+  id:'hookes-law', title:"Hooke's law", colour:'#2f6fde', soft:'#e9f0fd',
+  blurb:'Load a spring with masses and measure how far it stretches. Find the spring constant, k.',
+  eq:'F = k x', graphSummary:'Force (y) against extension (x)',
+  aim:{ guide:'Say what you are investigating, what you will change, what you will measure, and what value you are finding.',
+        starter:'To investigate how the ______ of a spring changes as the ______ applied to it increases, and to determine the ______ of the spring.' },
+  hyp:{ guide:'Make a prediction about the relationship <b>and</b> explain it using science. Mention Hooke\'s law and the limit of proportionality.',
+        starter:'I predict that as the force on the spring increases, the extension will ______ because Hooke\'s law states that ______. This will be true until ______.' },
+  vars:[
+    {n:'Force (weight of masses) on the spring', t:'IV', why:'You choose it: add 100 g (≈0.98 N) at a time.'},
+    {n:'Extension of the spring', t:'DV', why:'You measure it: new ruler reading minus original reading.'},
+    {n:'Using the same spring throughout', t:'CV', why:'A different spring would have a different spring constant.'},
+    {n:'Ruler fixed vertically in the same position', t:'CV', why:'If the ruler moves, all readings shift (systematic error).'},
+    {n:'Reading from the same point on the spring each time', t:'CV', why:'Always read the bottom of the spring (or a pointer) at eye level.'},
+    {n:'Size of each mass added (100 g steps)', t:'CV', why:'Equal steps give evenly spaced points on the graph.'}
+  ],
+  equip:[
+    ['Clamp and stand','holds the spring and the ruler'],['Spring','the object being tested'],['Masses and hanger','to apply the force (100 g steps)'],
+    ['Ruler','to measure the length/position of the spring'],['Balance','optional – to check the mass of the hanger and masses']
+  ],
+  extras:[['Eye protection','in case the spring recoils'],['Heavy weight or G-clamp','to stop the stand toppling']],
+  method:[
+    'Set up the clamp and stand near the edge of the bench and put a heavy weight on the base so it cannot tip over.',
+    'Hang the spring from the clamp. Clamp the ruler vertically beside the spring, with the zero end at the top.',
+    'Record the ruler reading at the bottom of the spring with no load. Read at eye level to avoid parallax error. This is the original reading.',
+    'Hang the mass hanger (100 g) on the spring. Wait for it to stop bouncing, then record the new ruler reading.',
+    'Add masses 100 g at a time, recording the reading each time, up to 800 g (or the maximum your teacher allows).',
+    'Remove the masses 100 g at a time and record the reading again for each load (unloading readings).',
+    'Calculate the mean reading for each load, then the extension = mean reading − original reading.'
+  ],
+  risks:[
+    ['Masses falling off the hanger','Injury to feet or hands','Keep feet away from under the masses; add masses gently; do not exceed the maximum load; place a box or tray underneath.'],
+    ['Clamp stand toppling over','Bruising / crushed fingers; damaged equipment','Put a heavy weight on the base or clamp it to the bench; hang the spring over the base of the stand.'],
+    ['Overstretched spring recoiling or flying off','Eye injury','Wear eye protection; do not overload the spring; keep your face away from the spring when adding masses.']
+  ],
+  tables:[{
+    title:'Results table: force and extension',
+    consts:[{key:'L0',label:'Original ruler reading (no load)',unit:'cm'}],
+    cols:[
+      {key:'m',label:'Mass',unit:'g'},
+      {key:'r1',label:'Ruler reading – loading',unit:'cm'},
+      {key:'r2',label:'Ruler reading – unloading',unit:'cm'},
+      {key:'F',label:'Force',unit:'N',calc:r=>r.m*G/1000,dp:2},
+      {key:'rm',label:'Mean reading',unit:'cm',calc:r=>mean([r.r1,r.r2]),dp:2},
+      {key:'x',label:'Extension',unit:'cm',calc:(r,C)=>r.rm-C.L0,dp:2},
+      {key:'xm',label:'Extension',unit:'m',calc:r=>r.x/100,dp:4}
+    ],
+    prefill:{m:[100,200,300,400,500,600,700,800]}
+  }],
+  graph:{type:'scatter', table:0, x:'xm', y:'F', xlabel:'Extension / m', ylabel:'Force / N',
+    title:'Graph to show how the force on a spring affects its extension',
+    result:(fit)=>({label:'Spring constant, k', value:fit.m, unit:'N/m', gradNote:'gradient = k (N/m)'})},
+  analysis:[
+    'Convert each mass to kg and calculate the force (weight) using <span class="formula">W = m × g</span> where g = 9.81 N/kg.',
+    'Calculate the mean ruler reading for each load, then <span class="formula">extension = mean reading − original reading</span>. Convert cm to m (÷ 100).',
+    'Plot <b>force (y-axis)</b> against <b>extension (x-axis)</b>. Use a sharp pencil, crosses (×) and at least half the page.',
+    'Draw a straight line of best fit through the linear part. If the points start to curve, mark the <b>limit of proportionality</b> where the line stops being straight.',
+    'Calculate the gradient using a large triangle: <span class="formula">k = ΔF ÷ Δx</span>. This is the spring constant in N/m.',
+    'Note: if your teacher asks for extension on the y-axis instead, then k = 1 ÷ gradient.'
+  ],
+  evalPrompts:[
+    'Is your graph a straight line through the origin? What does that tell you about Hooke\'s law?',
+    'Were the loading and unloading readings the same? If not, the spring may have been permanently deformed (gone past its elastic limit).',
+    'Sources of error: parallax when reading the ruler, the spring still bouncing, ruler not vertical, the ruler resolution (1 mm).',
+    'Improvements: attach a pointer to the bottom of the spring, use a set square to read the ruler, repeat each reading three times, use smaller steps near the limit of proportionality.'
+  ]
+},
+/* ---------------- YOUNG'S MODULUS ---------------- */
+{
+  id:'youngs-modulus', title:"Young's modulus", colour:'#7a4fd6', soft:'#f1ecfc',
+  blurb:'Stretch a thin wire with masses, measure its diameter and extension, and calculate the Young modulus.',
+  eq:'E = stress ÷ strain', graphSummary:'Stress (y) against strain (x)',
+  aim:{ guide:'Name the material of your wire and say which value you are determining and how.',
+        starter:'To determine the Young modulus of ______ wire by measuring the ______ of the wire when different ______ are applied to it.' },
+  hyp:{ guide:'Predict the relationship between stress and strain, and predict a value for the Young modulus using a data book value. Explain why.',
+        starter:'I predict that stress will be ______ to strain up to the limit of proportionality, because ______. I predict the Young modulus of ______ will be about ______ Pa.' },
+  vars:[
+    {n:'Force (load) applied to the wire', t:'IV', why:'You change it by adding 100 g masses.'},
+    {n:'Extension of the wire', t:'DV', why:'You measure it from the marker position on the ruler.'},
+    {n:'Material of the wire', t:'CV', why:'Different materials have different Young moduli.'},
+    {n:'Original length of the wire', t:'CV', why:'Strain depends on original length; measure it once and keep it the same.'},
+    {n:'Diameter (cross-sectional area) of the wire', t:'CV', why:'Use the same wire; stress depends on area.'},
+    {n:'Temperature of the room', t:'CV', why:'Metals expand when warm, which would add to the extension.'}
+  ],
+  equip:[
+    ['Wire','thin copper wire works well (about 0.2–0.3 mm diameter), as long as possible'],['Micrometer','to measure the wire diameter (to 0.01 mm)'],
+    ['Ruler (metre rule)','to measure the original length and the marker position'],['Clamp and stand','to hold the top of the wire securely and support the ruler'],
+    ['Masses and hanger','to apply the load']
+  ],
+  extras:[['Eye protection','essential – the wire can snap and whip'],['Sticky tape / paper flag','a marker on the wire to read against the ruler'],['Pulley + bench clamp (optional)','lets you use a longer horizontal wire, giving bigger, more accurate extensions']],
+  method:[
+    'Check the micrometer reads zero when closed. Measure the diameter of the wire at three different places along its length, rotating it each time. Record all three.',
+    'Clamp the top of the wire firmly in the clamp at the top of the stand. Weight the base of the stand so it cannot tip.',
+    'Hang the mass hanger on the bottom of the wire to pull it straight. Stick a small tape flag (marker) on the wire near the bottom.',
+    'Clamp the metre rule vertically next to the marker. Measure the original length of wire from the clamp to the marker, in metres.',
+    'Record the marker position on the ruler with only the hanger on. This is your zero reading.',
+    'Add 100 g at a time. Wait a few seconds for the wire to settle, then record the marker position, reading at eye level.',
+    'Continue until about 1 kg (or your teacher\'s maximum). If the marker keeps moving without adding mass, the wire is deforming plastically — stop.',
+    'Remove the masses one at a time and record the unloading readings.'
+  ],
+  risks:[
+    ['Wire snapping under tension','Wire whips and cuts the eye or skin','Wear eye protection; stand to the side, not over the wire; do not exceed the maximum load.'],
+    ['Masses falling when the wire breaks','Injury to feet','Place a box or cushion under the masses; keep feet clear.'],
+    ['Sharp cut ends of wire','Cuts to fingers','Handle wire carefully; bend the sharp ends over.'],
+    ['Clamp stand toppling','Injury / damaged equipment','Weight or clamp the base of the stand.']
+  ],
+  tables:[{
+    title:'Results table: load and extension',
+    note:'0 g row = hanger only (straightening load). Extension is measured from this first reading.',
+    consts:[
+      {key:'L',label:'Original length of wire',unit:'m'},
+      {key:'d1',label:'Diameter 1',unit:'mm'},{key:'d2',label:'Diameter 2',unit:'mm'},{key:'d3',label:'Diameter 3',unit:'mm'},
+      {key:'mat',label:'Wire material',select:[{label:'Copper (≈1.2 × 10¹¹ Pa)',v:1.2e11},{label:'Steel (≈2.0 × 10¹¹ Pa)',v:2.0e11},{label:'Brass (≈1.0 × 10¹¹ Pa)',v:1.0e11},{label:'Constantan (≈1.6 × 10¹¹ Pa)',v:1.6e11}]}
+    ],
+    derive:C=>{ const d = mean([C.d1,C.d2,C.d3]); return {d, A: Math.PI*(d/1000)**2/4}; },
+    deriveShow:[{key:'d',label:'Mean diameter',unit:'mm',dp:3},{key:'A',label:'Cross-sectional area',unit:'m²',dp:8}],
+    cols:[
+      {key:'m',label:'Added mass',unit:'g'},
+      {key:'r1',label:'Marker reading – loading',unit:'mm'},
+      {key:'r2',label:'Marker reading – unloading',unit:'mm'},
+      {key:'F',label:'Force',unit:'N',calc:r=>r.m*G/1000,dp:2},
+      {key:'rm',label:'Mean reading',unit:'mm',calc:r=>mean([r.r1,r.r2]),dp:1},
+      {key:'x',label:'Extension',unit:'m',calc:(r,C,rows)=>(r.rm-rows[0].rm)/1000,dp:4},
+      {key:'stress',label:'Stress',unit:'Pa',calc:(r,C)=>r.F/C.A,dp:0},
+      {key:'strain',label:'Strain',unit:'no unit',calc:(r,C)=>r.x/C.L,dp:5}
+    ],
+    prefill:{m:[0,100,200,300,400,500,600,700,800,900,1000]}
+  }],
+  graph:{type:'scatter', table:0, x:'strain', y:'stress', xlabel:'Strain', ylabel:'Stress / Pa',
+    title:'Graph to show stress against strain for a wire',
+    result:(fit,C)=>({label:'Young modulus, E', value:fit.m, unit:'Pa', accepted:C.mat, gradNote:'gradient = E (Pa)'})},
+  analysis:[
+    'Find the mean diameter, convert to metres (÷ 1000), then the cross-sectional area: <span class="formula">A = π d² ÷ 4</span>.',
+    'Calculate force for each load: <span class="formula">F = m × g</span> (mass in kg).',
+    'Calculate extension (in m) from the zero reading, then <span class="formula">stress = F ÷ A</span> (Pa) and <span class="formula">strain = extension ÷ original length</span> (no unit).',
+    'Plot <b>stress (y-axis)</b> against <b>strain (x-axis)</b>. Use standard form on the axes (e.g. ×10⁸ Pa).',
+    'Draw a line of best fit through the straight (elastic) section only. Untick any points beyond the limit of proportionality.',
+    'Gradient of the straight section = <span class="formula">E = Δstress ÷ Δstrain</span>.',
+    'Compare with the data book value: <span class="formula">% difference = |your value − data value| ÷ data value × 100</span>.'
+  ],
+  evalPrompts:[
+    'How close was your value to the data book value? Calculate the percentage difference.',
+    'The extension is very small (millimetres) – what was the percentage uncertainty in each reading? (resolution ÷ reading × 100)',
+    'The diameter is squared in the area, so a small error in d has a big effect on E. How precise were your three diameter readings?',
+    'Improvements: use a longer wire (horizontal over a pulley), use a vernier scale or travelling microscope, measure diameter at more points, use a comparison (reference) wire to cancel temperature effects.'
+  ]
+},
+/* ---------------- DENSITY ---------------- */
+{
+  id:'density', title:'Density', colour:'#0f8f7e', soft:'#e3f5f2',
+  blurb:'Find the density of regular and irregular solids (and liquids) from their mass and volume.',
+  eq:'ρ = m ÷ V', graphSummary:'Bar chart comparing densities',
+  aim:{ guide:'Say what you will find the density of, and the two different methods you will use for volume.',
+        starter:'To determine the density of ______-shaped and ______-shaped objects by measuring their ______ using a balance and their ______ using measurements and displacement.' },
+  hyp:{ guide:'Predict the density of each material using data book values. Explain what density depends on (mass and volume / how closely packed the particles are).',
+        starter:'I predict the density of ______ will be about ______ g/cm³ because ______. Objects that sink in water will have a density ______ than 1.0 g/cm³.' },
+  vars:[
+    {n:'The object / material tested', t:'IV', why:'You change which object you measure.'},
+    {n:'Density of the object', t:'DV', why:'Calculated from the measured mass and volume.'},
+    {n:'Using the same zeroed balance', t:'CV', why:'Prevents a zero error affecting all masses.'},
+    {n:'Eureka can filled to the spout before each object', t:'CV', why:'Otherwise not all displaced water is collected.'},
+    {n:'Reading the bottom of the meniscus at eye level', t:'CV', why:'Avoids parallax error in volume readings.'},
+    {n:'Temperature of the water/liquids', t:'CV', why:'Liquid density changes slightly with temperature.'}
+  ],
+  equip:[
+    ['Balance','to measure mass (zero it first)'],['Ruler','to measure length, width and height of regular objects'],['Micrometer','for small dimensions (under 2.5 cm) – more precise'],
+    ['Regular shaped objects','cubes, cuboids, cylinders'],['Irregular shaped objects','e.g. stones, keys, plasticine'],['Eureka can','to collect water displaced by irregular objects'],
+    ['Measuring cylinder','to measure displaced water / liquid volume'],['Large measuring cylinder','for larger objects or liquids'],['Beaker','to fill the eureka can'],
+    ['Water, oil, honey','optional – density of liquids (needed for the falling ball practical)']
+  ],
+  extras:[['Thread / string','to lower irregular objects gently into the eureka can'],['Paper towels','to dry objects and wipe spills']],
+  method:[
+    'Regular objects: zero the balance and measure the mass of each object in grams.',
+    'Measure the length, width and height with a ruler (or the micrometer for small dimensions). For a cylinder measure the length and the diameter.',
+    'Calculate the volume: cuboid = l × w × h; cylinder = π r² h; sphere = 4/3 π r³.',
+    'Irregular objects: measure the mass on the balance.',
+    'Fill the eureka can with water until it flows out of the spout. Wait until it stops dripping.',
+    'Place an empty measuring cylinder under the spout. Lower the object gently into the can (on a thread) so no water splashes out.',
+    'When dripping stops, read the volume of water collected at the bottom of the meniscus, at eye level. This equals the object\'s volume.',
+    'Liquids (optional): measure the mass of an empty measuring cylinder, add about 50 cm³ of liquid, read the volume, then measure the mass again.',
+    'Repeat each measurement and calculate densities using ρ = m ÷ V.'
+  ],
+  risks:[
+    ['Spilt water, oil or honey','Slipping','Work on a tray; wipe up spills immediately.'],
+    ['Glass measuring cylinder knocked over','Cuts from broken glass','Keep it away from the bench edge; report breakages, do not pick up broken glass by hand.'],
+    ['Dropping heavy objects into the eureka can','Splashing; cracked equipment; injury to feet','Lower objects gently on thread.'],
+    ['Electrical balance near water','Electric shock / damage','Keep water away from the balance; dry objects before weighing.']
+  ],
+  tables:[
+    { title:'Table 1: Regular shaped objects',
+      note:'Shape: cuboid uses a × b × c. Cylinder: a = length, b = diameter. Sphere: b = diameter.',
+      cols:[
+        {key:'obj',label:'Object / material',text:true},
+        {key:'shape',label:'Shape',select:['Cuboid','Cylinder','Sphere']},
+        {key:'m',label:'Mass',unit:'g'},
+        {key:'a',label:'Length a',unit:'cm'},
+        {key:'b',label:'Width or diameter b',unit:'cm'},
+        {key:'c',label:'Height c',unit:'cm'},
+        {key:'V',label:'Volume',unit:'cm³',calc:r=> r.shape==='Cylinder'? Math.PI*(r.b/2)**2*r.a : r.shape==='Sphere'? 4/3*Math.PI*(r.b/2)**3 : r.a*r.b*r.c, dp:2},
+        {key:'rho',label:'Density',unit:'g/cm³',calc:r=>r.m/r.V,dp:2},
+        {key:'rhoSI',label:'Density',unit:'kg/m³',calc:r=>r.rho*1000,dp:0},
+        {key:'ref',label:'Data book density',unit:'g/cm³'},
+        {key:'pd',label:'% difference',unit:'%',calc:r=>Math.abs(r.rho-r.ref)/r.ref*100,dp:1}
+      ], rows:4 },
+    { title:'Table 2: Irregular shaped objects (eureka can)',
+      cols:[
+        {key:'obj',label:'Object / material',text:true},
+        {key:'m',label:'Mass',unit:'g'},
+        {key:'V',label:'Volume of water displaced',unit:'cm³'},
+        {key:'rho',label:'Density',unit:'g/cm³',calc:r=>r.m/r.V,dp:2},
+        {key:'rhoSI',label:'Density',unit:'kg/m³',calc:r=>r.rho*1000,dp:0},
+        {key:'ref',label:'Data book density',unit:'g/cm³'},
+        {key:'pd',label:'% difference',unit:'%',calc:r=>Math.abs(r.rho-r.ref)/r.ref*100,dp:1}
+      ], rows:3 },
+    { title:'Table 3 (optional): Liquids',
+      note:'Your liquid densities (kg/m³) are needed for the viscosity calculation in the falling ball practical.',
+      cols:[
+        {key:'obj',label:'Liquid',text:true},
+        {key:'m1',label:'Mass of empty cylinder',unit:'g'},
+        {key:'m2',label:'Mass of cylinder + liquid',unit:'g'},
+        {key:'V',label:'Volume of liquid',unit:'cm³'},
+        {key:'ml',label:'Mass of liquid',unit:'g',calc:r=>r.m2-r.m1,dp:1},
+        {key:'rho',label:'Density',unit:'g/cm³',calc:r=>r.ml/r.V,dp:2},
+        {key:'rhoSI',label:'Density',unit:'kg/m³',calc:r=>r.rho*1000,dp:0},
+        {key:'ref',label:'Data book density',unit:'g/cm³'},
+        {key:'pd',label:'% difference',unit:'%',calc:r=>Math.abs(r.rho-r.ref)/r.ref*100,dp:1}
+      ], prefill:{obj:['Water','Vegetable oil','Honey'], ref:['1.00','0.92','1.42']} }
+  ],
+  refData:[['Water','1.00'],['Vegetable oil','≈ 0.92'],['Honey','≈ 1.42'],['Aluminium','2.70'],['Iron / steel','≈ 7.9'],['Copper','8.96'],['Brass','≈ 8.5'],['Acrylic (Perspex)','≈ 1.18'],['Pine wood','≈ 0.5']],
+  graph:{type:'bar', sources:[{table:0,label:'obj',value:'rho'},{table:1,label:'obj',value:'rho'},{table:2,label:'obj',value:'rho'}],
+    ylabel:'Density / g/cm³', title:'Bar chart comparing the densities of the materials tested'},
+  analysis:[
+    'For each regular object calculate the volume from your measurements (show one example of each formula in your report).',
+    'Calculate density: <span class="formula">ρ = m ÷ V</span> in g/cm³. To convert to kg/m³ multiply by 1000.',
+    'Look up the data book density of each material and calculate <span class="formula">% difference = |your value − data value| ÷ data value × 100</span>.',
+    'A line graph is <b>not</b> needed because the independent variable (material) is categoric. Draw a <b>bar chart</b> to compare densities instead.',
+    'Extension: if you have several objects made of the same material, plot mass (y) against volume (x). The gradient = density.'
+  ],
+  evalPrompts:[
+    'Which method (measuring dimensions or displacement) gave values closer to the data book? Why?',
+    'Errors: air bubbles stuck to objects, water left in the spout, meniscus reading, objects not being perfectly regular, resolution of the ruler (1 mm).',
+    'Why is the micrometer better than a ruler for small objects? (resolution 0.01 mm vs 1 mm – lower percentage uncertainty)',
+    'Improvements: use a smaller measuring cylinder for small volumes, repeat measurements, use a more precise balance.'
+  ]
+},
+/* ---------------- SPECIFIC HEAT CAPACITY ---------------- */
+{
+  id:'specific-heat-capacity', title:'Specific heat capacity', colour:'#d9480f', soft:'#fdeee6',
+  blurb:'Heat a metal block with an immersion heater, measure energy and temperature rise, and calculate c.',
+  eq:'E = m c ΔT', graphSummary:'Energy supplied (y) against temperature rise (x)',
+  aim:{ guide:'Name the block\'s material and say what you will measure.',
+        starter:'To determine the specific heat capacity of ______ by measuring the ______ supplied to a block and its ______ in temperature.' },
+  hyp:{ guide:'Predict the relationship between energy supplied and temperature rise, and predict how your value will compare with the data book value – explain why.',
+        starter:'I predict that the temperature rise will be ______ to the energy supplied, because ______. I predict my value for c will be slightly ______ than the data book value because ______.' },
+  vars:[
+    {n:'Energy supplied (joulemeter reading / heating time)', t:'IV', why:'Readings are taken every minute as energy is added.'},
+    {n:'Temperature of the block', t:'DV', why:'Measured with the thermometer; used to find ΔT.'},
+    {n:'Mass of the block', t:'CV', why:'Same block throughout; measured on the balance.'},
+    {n:'Material of the block', t:'CV', why:'Different materials have different values of c.'},
+    {n:'Power pack voltage setting', t:'CV', why:'Keeps the heating rate steady.'},
+    {n:'Amount of insulation around the block', t:'CV', why:'Changing it would change the energy lost to surroundings.'}
+  ],
+  equip:[
+    ['Block with 2 holes','metal block (often aluminium, 1 kg) – one hole for heater, one for thermometer'],['Immersion heater','supplies the energy'],
+    ['Power pack','low-voltage supply, usually 12 V'],['Joulemeter','measures the energy supplied in J'],['Thermometer','measures block temperature (°C)'],
+    ['Insulation','wrapped around the block to reduce energy loss'],['Stop clock','to take readings every minute'],['Balance','to measure the mass of the block'],
+    ['Oil','a few drops in the thermometer hole for good thermal contact']
+  ],
+  extras:[['Heat-proof mat','to stand the block on']],
+  method:[
+    'Measure the mass of the block on the balance and convert to kg.',
+    'Put the immersion heater in the large hole and the thermometer in the small hole. Add a few drops of oil to the thermometer hole for good thermal contact.',
+    'Wrap the block in insulation (including the top if possible).',
+    'Connect the heater to the power pack through the joulemeter. Set the power pack to 12 V (check with your teacher). Reset the joulemeter to zero.',
+    'Record the starting temperature of the block.',
+    'Switch on the power pack and start the stop clock at the same time.',
+    'Every minute, record the temperature and the joulemeter reading. Continue for 10 minutes.',
+    'Switch off. Keep watching the thermometer – record the highest temperature reached (the block keeps warming briefly as heat spreads from the heater).'
+  ],
+  risks:[
+    ['Hot heater and block','Burns to skin','Do not touch the heater or block during or straight after heating; allow to cool on a heat-proof mat.'],
+    ['Heater switched on outside the block','Heater overheats – burns / fire risk','Only switch on when the heater is fully inside the block.'],
+    ['Electricity','Electric shock','Use a low-voltage power pack; check leads for damage; keep water and wet hands away.'],
+    ['Glass thermometer','Cuts if broken','Place it where it cannot roll off the bench; report breakages.'],
+    ['Oil','Slipping if spilt; can be hot','Use only a few drops; wipe up spills.']
+  ],
+  tables:[{
+    title:'Results table: energy supplied and temperature',
+    consts:[
+      {key:'m',label:'Mass of block',unit:'kg'},
+      {key:'mat',label:'Block material',select:[{label:'Aluminium (900 J/kg °C)',v:900},{label:'Copper (385 J/kg °C)',v:385},{label:'Iron / steel (450 J/kg °C)',v:450},{label:'Brass (380 J/kg °C)',v:380}]}
+    ],
+    cols:[
+      {key:'t',label:'Time',unit:'min'},
+      {key:'T',label:'Temperature',unit:'°C'},
+      {key:'J',label:'Joulemeter reading',unit:'J'},
+      {key:'dT',label:'Temperature rise ΔT',unit:'°C',calc:(r,C,rows)=>r.T-rows[0].T,dp:1},
+      {key:'E',label:'Energy supplied',unit:'J',calc:(r,C,rows)=>r.J-rows[0].J,dp:0}
+    ],
+    prefill:{t:[0,1,2,3,4,5,6,7,8,9,10]}
+  }],
+  graph:{type:'scatter', table:0, x:'dT', y:'E', xlabel:'Temperature rise / °C', ylabel:'Energy supplied / J',
+    title:'Graph to show energy supplied against temperature rise',
+    result:(fit,C)=>({label:'Specific heat capacity, c', value:fit.m/C.m, unit:'J/kg °C', accepted:C.mat, gradNote:'gradient = m × c (J/°C), so c = gradient ÷ mass'})},
+  analysis:[
+    'Calculate the temperature rise ΔT for each reading (temperature − starting temperature) and the energy supplied (joulemeter reading − starting reading).',
+    'Plot <b>energy supplied (y-axis)</b> against <b>temperature rise (x-axis)</b>. Draw a straight line of best fit.',
+    'The first minute or two may curve because the heater has to warm up first – untick those points so they are not used in the fit.',
+    'Gradient = <span class="formula">ΔE ÷ ΔT = m × c</span>, so <span class="formula">c = gradient ÷ m</span>.',
+    'Also do a single calculation from your final readings: <span class="formula">c = E ÷ (m × ΔT)</span> and compare it with the graph value.',
+    'Compare with the data book value and calculate the % difference.'
+  ],
+  evalPrompts:[
+    'Was your value higher or lower than the data book value? Energy lost to the surroundings means more energy is needed per °C, so the value is usually too high.',
+    'How did the insulation, the oil and the thermometer resolution affect your results?',
+    'Why does the temperature keep rising after the heater is switched off? How does this affect your ΔT?',
+    'Improvements: more/better insulation (including the top), use a digital thermometer or temperature probe and data logger, start the block below room temperature.'
+  ]
+},
+/* ---------------- SPECIFIC LATENT HEAT ---------------- */
+{
+  id:'specific-latent-heat', title:'Specific latent heat of fusion (ice)', colour:'#1c7ed6', soft:'#e6f2fc',
+  blurb:'Melt ice with an immersion heater, measure the energy supplied and mass melted, and calculate L.',
+  eq:'E = m L', graphSummary:'Energy supplied (y) against mass melted (x)',
+  aim:{ guide:'State the substance, the change of state, and what you will measure.',
+        starter:'To determine the specific latent heat of ______ of ice by measuring the ______ supplied by a heater and the ______ of ice melted.' },
+  hyp:{ guide:'Predict the relationship between energy supplied and mass of ice melted. Explain what happens to the energy during melting (particles, bonds, temperature stays at 0 °C).',
+        starter:'I predict that the mass of ice melted will be ______ to the energy supplied. The temperature will stay at ______ °C while the ice melts because the energy is used to ______ rather than increase ______.' },
+  vars:[
+    {n:'Energy supplied by the heater', t:'IV', why:'Read from the joulemeter at regular time intervals.'},
+    {n:'Mass of ice melted by the heater', t:'DV', why:'Mass of water collected (heater funnel minus control funnel).'},
+    {n:'Ice crushed and already melting (at 0 °C)', t:'CV', why:'Ice below 0 °C would need energy to warm up first, not just to melt.'},
+    {n:'Same amount of ice in both funnels', t:'CV', why:'So the control fairly measures melting caused by the room.'},
+    {n:'Power pack voltage setting', t:'CV', why:'Keeps the heating rate constant.'},
+    {n:'Room temperature', t:'CV', why:'Affects how fast ice melts on its own (corrected by the control).'}
+  ],
+  equip:[
+    ['Ice','crushed, and left to start melting so it is at 0 °C'],['Immersion heater','supplies energy to the ice'],['Power pack','low-voltage supply'],
+    ['Joulemeter','measures energy supplied (J)'],['Beaker (×2)','collect the melted water from each funnel'],['Balance','to measure the mass of water collected'],
+    ['Clamp and stand (×2)','to hold the funnels'],['Stop clock','for regular readings'],['Thermometer','to check the ice is at 0 °C'],['Insulation','optional – around the funnel to reduce heat gain from the room']
+  ],
+  extras:[['Filter funnels (×2)','to hold the ice so melted water drains into the beakers'],['Paper towels','for spills']],
+  method:[
+    'Set up two funnels in clamp stands, each with a beaker underneath. One funnel is the experiment, the other is the control.',
+    'Put the immersion heater in the experiment funnel (NOT switched on). Pack crushed ice tightly around it. Fill the control funnel with the same amount of ice but no heater.',
+    'Wait until water drips steadily from both funnels so you know the ice is at 0 °C (check with the thermometer).',
+    'Empty both beakers, put them back, and measure the mass of each beaker on the balance. Reset the joulemeter to zero.',
+    'Switch on the heater and start the stop clock.',
+    'Every 2 minutes, record the joulemeter reading and quickly measure the mass of each beaker + water, then put it straight back.',
+    'Continue for about 12 minutes, adding more ice around the heater so it is always covered. Switch off before the ice runs out.',
+    'The control beaker shows how much ice melted because of the warm room; subtract it from the heater beaker.'
+  ],
+  risks:[
+    ['Electricity near water','Electric shock','Use a low-voltage power pack; keep the power pack, joulemeter and plugs away from water; dry hands before touching switches.'],
+    ['Heater not surrounded by ice','Heater overheats – burns / damage','Keep the heater covered with ice at all times; switch off before the ice runs out.'],
+    ['Hot heater after use','Burns','Let it cool before removing; do not touch the element.'],
+    ['Spilt water / ice on floor','Slipping','Pick up dropped ice; wipe spills immediately.'],
+    ['Glass beakers','Cuts if broken','Handle carefully; report breakages.']
+  ],
+  tables:[{
+    title:'Results table: energy and mass of ice melted',
+    note:'The first row (time 0) is the empty-beaker mass. Masses after that are beaker + water.',
+    cols:[
+      {key:'t',label:'Time',unit:'min'},
+      {key:'J',label:'Joulemeter reading',unit:'J'},
+      {key:'mh',label:'Mass of heater beaker + water',unit:'g'},
+      {key:'mc',label:'Mass of control beaker + water',unit:'g'},
+      {key:'wh',label:'Water from heater funnel',unit:'g',calc:(r,C,rows)=>r.mh-rows[0].mh,dp:1},
+      {key:'wc',label:'Water from control funnel',unit:'g',calc:(r,C,rows)=>r.mc-rows[0].mc,dp:1},
+      {key:'mm',label:'Ice melted by heater',unit:'kg',calc:r=>(r.wh-r.wc)/1000,dp:4},
+      {key:'E',label:'Energy supplied',unit:'J',calc:(r,C,rows)=>r.J-rows[0].J,dp:0}
+    ],
+    prefill:{t:[0,2,4,6,8,10,12]}
+  }],
+  graph:{type:'scatter', table:0, x:'mm', y:'E', xlabel:'Mass of ice melted by heater / kg', ylabel:'Energy supplied / J',
+    title:'Graph to show energy supplied against mass of ice melted',
+    result:(fit)=>({label:'Specific latent heat of fusion, L', value:fit.m, unit:'J/kg', accepted:334000, gradNote:'gradient = L (J/kg)'})},
+  analysis:[
+    'Calculate the mass of water collected in each beaker since the start.',
+    'Mass melted by the heater = <span class="formula">heater water − control water</span>. Convert to kg (÷ 1000).',
+    'Calculate energy supplied = joulemeter reading − starting reading.',
+    'Plot <b>energy supplied (y-axis)</b> against <b>mass of ice melted (x-axis)</b>. Draw a straight line of best fit.',
+    'Gradient = <span class="formula">L = ΔE ÷ Δm</span> in J/kg.',
+    'Single calculation from the final readings: <span class="formula">L = E ÷ m</span>. Compare both with the data book value of 334 000 J/kg (3.34 × 10⁵ J/kg).'
+  ],
+  evalPrompts:[
+    'Was your value higher or lower than 3.34 × 10⁵ J/kg? Think about energy lost from the heater to the funnel/air, and water left clinging to the ice.',
+    'Why is the control funnel needed? What would happen to your value without it?',
+    'Was all the heater element touching ice? Gaps would mean energy heats air instead.',
+    'Improvements: finely crushed ice packed tightly, insulate the funnel, use a larger mass of ice and longer time, use an electronic balance with higher resolution.'
+  ]
+},
+/* ---------------- FALLING BALL ---------------- */
+{
+  id:'falling-ball', title:'Falling ball bearing (viscosity)', colour:'#a61e4d', soft:'#fbe9ef',
+  blurb:'Time a ball bearing falling through water, oil and honey. Compare terminal velocities and estimate viscosity.',
+  eq:'v = d ÷ t', graphSummary:'Bar chart of terminal velocity for each liquid',
+  aim:{ guide:'Say which liquids you will compare and what you will measure.',
+        starter:'To investigate how the ______ of a liquid affects the ______ of a ball bearing falling through it, using water, ______ and ______.' },
+  hyp:{ guide:'Predict the order of the liquids, from fastest to slowest. Explain using forces: weight, upthrust and drag (viscous force), and terminal velocity.',
+        starter:'I predict the ball bearing will fall fastest through ______ and slowest through ______ because a more ______ liquid produces a larger ______ force, so the forces balance at a ______ terminal velocity.' },
+  vars:[
+    {n:'Type of liquid (its viscosity)', t:'IV', why:'Water, oil and honey – a categoric variable.'},
+    {n:'Time to fall between two marks (terminal velocity)', t:'DV', why:'Measured with a stop clock; velocity = distance ÷ time.'},
+    {n:'Size and mass of the ball bearing', t:'CV', why:'A bigger/heavier ball has more weight and falls faster.'},
+    {n:'Distance between the start and finish marks', t:'CV', why:'Keep it the same so times can be compared.'},
+    {n:'Start mark well below the surface', t:'CV', why:'The ball must have reached terminal velocity before timing starts.'},
+    {n:'Temperature of the liquids', t:'CV', why:'Viscosity changes a lot with temperature, especially honey and oil.'}
+  ],
+  equip:[
+    ['Large measuring cylinder','tall tube to hold each liquid'],['Measuring cylinder','alternative tube / for smaller amounts'],['Ball bearings','identical steel balls'],
+    ['Water, oil and honey','the three liquids being compared'],['Stop clock','to time the fall'],['Ruler','to measure the distance between marks'],
+    ['Micrometer','to measure the ball diameter (for the viscosity calculation)'],['Balance','to measure the mass of the ball bearing'],['Clamp and stand','to hold the tall cylinder steady']
+  ],
+  extras:[['Elastic bands or marker pen','to mark the start and finish lines (or use the cylinder scale)'],['Magnet','to retrieve the ball bearing from the bottom'],['Tray and paper towels','to contain spills']],
+  method:[
+    'Measure the diameter of the ball bearing with the micrometer three times and find the mean. Measure its mass on the balance.',
+    'Fill the large measuring cylinder with the first liquid. Stand it on a tray and clamp it so it cannot be knocked over.',
+    'Choose a start mark at least 10 cm below the surface (so the ball reaches terminal velocity) and a finish mark near the bottom. Measure the distance between them.',
+    'Hold the ball just at the surface in the centre of the cylinder and release it (do not throw it).',
+    'Start the stop clock when the ball passes the start mark and stop it at the finish mark, with your eye level with each mark.',
+    'Retrieve the ball with a magnet, dry it, and repeat to get three times for this liquid.',
+    'Repeat for the other two liquids, using the same ball and the same distance.',
+    'Tip: water is very fast to time by hand – use the longest distance possible, or film it on a phone (slow-motion) and time from the video.'
+  ],
+  risks:[
+    ['Spilt water, oil or honey','Slipping','Work on a tray; wipe spills straight away.'],
+    ['Tall glass cylinder knocked over','Cuts from broken glass; spills','Clamp the cylinder to a stand; keep away from the bench edge.'],
+    ['Dropped ball bearings','Slipping on the floor','Count the ball bearings in and out; pick up any that drop.'],
+    ['Sticky / oily hands','Dropping equipment; skin irritation','Wash hands after the practical; dry hands before handling glassware.']
+  ],
+  tables:[{
+    title:'Results table: time to fall a set distance',
+    note:'Liquid density is optional. Enter it in kg/m³ (from the density practical) to estimate the viscosity using Stokes\' law.',
+    consts:[
+      {key:'D',label:'Distance between marks',unit:'cm'},
+      {key:'dia',label:'Ball diameter (mean)',unit:'mm'},
+      {key:'mb',label:'Mass of ball bearing',unit:'g'}
+    ],
+    derive:C=>{ const r = C.dia/2000; const V = 4/3*Math.PI*r**3; return {r, rhoS:(C.mb/1000)/V}; },
+    deriveShow:[{key:'r',label:'Radius',unit:'m',dp:5},{key:'rhoS',label:'Density of ball',unit:'kg/m³',dp:0}],
+    cols:[
+      {key:'liq',label:'Liquid',text:true},
+      {key:'t1',label:'Time 1',unit:'s'},{key:'t2',label:'Time 2',unit:'s'},{key:'t3',label:'Time 3',unit:'s'},
+      {key:'tm',label:'Mean time',unit:'s',calc:r=>mean([r.t1,r.t2,r.t3]),dp:2},
+      {key:'v',label:'Terminal velocity',unit:'m/s',calc:(r,C)=>(C.D/100)/r.tm,dp:3},
+      {key:'rhoL',label:'Liquid density',unit:'kg/m³'},
+      {key:'eta',label:'Viscosity (Stokes)',unit:'Pa s',calc:(r,C)=>2*C.r**2*(C.rhoS-r.rhoL)*G/(9*r.v),dp:3}
+    ],
+    prefill:{liq:['Water','Oil','Honey']}
+  }],
+  graph:{type:'bar', sources:[{table:0,label:'liq',value:'v'}], ylabel:'Mean terminal velocity / m/s',
+    title:'Bar chart to show the terminal velocity of a ball bearing in different liquids'},
+  analysis:[
+    'Check the three times for each liquid. Circle any anomaly (very different from the others) and leave it out of the mean.',
+    'Calculate the mean time, then <span class="formula">terminal velocity v = distance ÷ mean time</span> (distance in m).',
+    'Because the independent variable (type of liquid) is <b>categoric</b>, draw a <b>bar chart</b> of terminal velocity for each liquid, not a line graph.',
+    'Rank the liquids from fastest to slowest and link this to viscosity.',
+    'Extension – estimate viscosity with Stokes\' law: <span class="formula">η = 2 r² (ρ<sub>ball</sub> − ρ<sub>liquid</sub>) g ÷ 9v</span>. Ball density = mass ÷ (4/3 π r³).',
+    'Compare with typical values: water ≈ 0.001 Pa s, vegetable oil ≈ 0.05–0.08 Pa s, honey ≈ 2–10 Pa s (varies with temperature and type). Stokes\' law only works for slow falls, so the water value will not be reliable.'
+  ],
+  evalPrompts:[
+    'Did the results support your hypothesis? Use your velocities as evidence.',
+    'Reaction time is about 0.2 s – how big an error is that compared with each of your times? Which liquid was worst affected?',
+    'Had the ball reached terminal velocity before the start mark? How could you check? (Time two equal sections – the times should match.)',
+    'Other errors: ball touching the side of the cylinder, parallax at the marks, temperature of the honey, air bubbles on the ball.',
+    'Improvements: longer tube, video analysis or light gates, control the temperature with a water bath, more repeats.'
+  ]
+}
+];
+
+const STEPS = [
+  {k:'plan',t:'Aim & hypothesis'},{k:'vars',t:'Variables'},{k:'method',t:'Equipment & method'},{k:'risk',t:'Risk assessment'},
+  {k:'results',t:'Results table'},{k:'analysis',t:'Graph & analysis'},{k:'eval',t:'Conclusion & evaluation'},{k:'check',t:'Checklist & copy'}
+];
+const CHECK = [
+  ['Title','A clear title for the practical.'],
+  ['Aim','What you are investigating / determining.'],
+  ['Hypothesis','A prediction with a scientific explanation (not just a guess).'],
+  ['Variables','Independent, dependent and at least three control variables – and how each is controlled.'],
+  ['Equipment list','Everything used, with sizes/ranges where relevant (e.g. 0–25 mm micrometer).'],
+  ['Method','Numbered steps, in your own words, detailed enough for someone else to repeat it.'],
+  ['Risk assessment','A table of hazard → risk → control measure.'],
+  ['Results table','Ruled table; quantity / unit in the headers only; consistent decimal places; repeats and means.'],
+  ['Calculations','At least one worked example of each calculation, showing the equation and units.'],
+  ['Graph','Title, labelled axes with units, sensible scale (over half the page), points plotted accurately, line of best fit, anomalies circled.'],
+  ['Gradient / final value','Gradient worked out with a large triangle (shown on the graph) and final value with units.'],
+  ['Conclusion','What you found, using your numbers; is the hypothesis supported? Explain with science.'],
+  ['Evaluation','Accuracy (% difference), precision/repeatability, sources of error (random and systematic), improvements.']
+];
+
+/* ============ state ============ */
+const KEY = 'btec-physics-practicals-v1';
+let S = {};
+try { S = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e){ S = {}; }
+let saveT;
+function save(){ clearTimeout(saveT); saveT = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }, 250); }
+function st(id){ S[id] = S[id] || {}; const s = S[id]; s.text = s.text || {}; s.vars = s.vars || {}; s.tables = s.tables || {}; s.check = s.check || {}; s.method = s.method || {}; s.varsChecked = s.varsChecked || false; s.step = s.step || 0; return s; }
+function tstate(exp, ti){
+  const s = st(exp.id); let ts = s.tables[ti];
+  if (!ts){
+    const td = exp.tables[ti]; const pf = td.prefill || {}; const n = Math.max(td.rows || 0, ...Object.values(pf).map(a => a.length));
+    ts = {consts:{}, rows:[], inc:[]};
+    for (let i = 0; i < n; i++){ const row = {}; for (const k in pf) if (pf[k][i] !== undefined) row[k] = String(pf[k][i]); ts.rows.push(row); }
+    s.tables[ti] = ts;
+  }
+  ts.inc = ts.inc || [];
+  return ts;
+}
+function computeTable(td, ts){
+  const C = {};
+  (td.consts || []).forEach(c => {
+    if (c.select){ const i = +(ts.consts[c.key] ?? 0); C[c.key] = c.select[i].v; C[c.key + '_label'] = c.select[i].label; }
+    else C[c.key] = N(ts.consts[c.key]);
+  });
+  if (td.derive) Object.assign(C, td.derive(C));
+  const rows = [];
+  ts.rows.forEach((raw, i) => {
+    const r = {}; rows.push(r);
+    td.cols.forEach(col => {
+      if (col.calc){ let v; try { v = col.calc(r, C, rows, i); } catch(e){ v = NaN; } r[col.key] = (typeof v === 'number' && isFinite(v)) ? v : NaN; }
+      else if (col.text) r[col.key] = raw[col.key] ?? '';
+      else if (col.select) r[col.key] = raw[col.key] ?? col.select[0];
+      else r[col.key] = N(raw[col.key]);
+    });
+  });
+  return {C, rows};
+}
+
+/* ============ routing ============ */
+function current(){ const h = location.hash.replace('#',''); return EXPS.find(e => e.id === h) || null; }
+window.addEventListener('hashchange', () => { render(); window.scrollTo(0,0); });
+
+function renderTabs(){
+  const cur = current();
+  document.getElementById('tabs').innerHTML =
+    `<a class="exp-tab ${!cur?'active':''}" href="#overview">Overview</a>` +
+    EXPS.map(e => `<a class="exp-tab ${cur===e?'active':''}" href="#${e.id}"><span class="dot" style="background:${e.colour}"></span>${e.title.replace(' (ice)','').replace(' (viscosity)','')}</a>`).join('');
+}
+
+function render(){
+  renderTabs();
+  const exp = current();
+  const app = document.getElementById('app');
+  if (!exp){ app.innerHTML = homeHTML(); document.documentElement.style.setProperty('--accent','#2f6fde'); document.documentElement.style.setProperty('--accent-soft','#e9f0fd'); return; }
+  document.documentElement.style.setProperty('--accent', exp.colour);
+  document.documentElement.style.setProperty('--accent-soft', exp.soft);
+  const s = st(exp.id);
+  const done = CHECK.filter((c,i) => s.check[i]).length;
+  app.innerHTML = `
+    <div class="exp-head"><div><h2>${exp.title}</h2><p>${exp.blurb}</p></div><div class="eq">${exp.eq}</div></div>
+    <div class="layout">
+      <aside class="stepnav">
+        ${STEPS.map((x,i) => `<button data-act="step" data-s="${i}" class="${s.step===i?'active':''}"><span class="num">${i+1}</span>${x.t}</button>`).join('')}
+        <div class="prog">Write-up checklist: ${done}/${CHECK.length}<div class="bar"><span style="width:${done/CHECK.length*100}%"></span></div></div>
+      </aside>
+      <section class="card" id="stepbody">${stepHTML(exp, s.step)}
+        <div class="pager">
+          ${s.step>0?`<button class="btn" data-act="step" data-s="${s.step-1}">← ${STEPS[s.step-1].t}</button>`:'<span></span>'}
+          ${s.step<STEPS.length-1?`<button class="btn primary" data-act="step" data-s="${s.step+1}">${STEPS[s.step+1].t} →</button>`:'<span></span>'}
+        </div>
+      </section>
+    </div>`;
+}
+
+/* ============ home ============ */
+function homeHTML(){
+  const allEquip = ['Beaker','Ice','Immersion heater','Insulation','Thermometer','Joulemeter','Power pack','Block with 2 holes','Stop clock','Ball bearing','Honey','Oil','Large measuring cylinder','Measuring cylinder','Eureka can','Balance','Irregular shaped objects','Regular shaped objects','Micrometer','Wire','Ruler','Spring','Clamp and stand','Masses and hanger'];
+  const uses = (e, item) => e.equip.some(q => { const a = q[0].toLowerCase(); const b = item.toLowerCase(); return a.includes(b) || b.includes(a.replace(/s$/,'').split(' (')[0]) || (b==='ball bearing' && a.includes('ball bearing')) || ((b==='honey'||b==='oil') && a.includes(b)); });
+  const extras = {};
+  EXPS.forEach(e => e.extras.forEach(x => { (extras[x[0]] = extras[x[0]] || []).push(e.id); }));
+  return `
+  <div class="hero"><h2>Plan it, do it, write it up: six physics practicals</h2>
+  <p class="muted" style="max-width:760px">Choose a practical. Work through the eight steps: plan your aim and hypothesis, sort your variables, follow the method safely, enter your results (calculations are done for you to check against), plot your graph, then evaluate. Your answers save in this browser, and you can copy the whole write-up into Word at the end.</p></div>
+  <div class="grid6">${EXPS.map(e => `<a class="expcard" style="--c:${e.colour}" href="#${e.id}"><h3>${e.title}</h3><div>${e.blurb}</div><div class="meta"><b>Key equation:</b> ${e.eq}<br><b>Graph:</b> ${e.graphSummary}</div></a>`).join('')}</div>
+  <h3>What every write-up needs</h3>
+  <div class="structure">
+    ${[['Aim','What you are finding out'],['Hypothesis','Prediction + scientific reason'],['Variables','IV, DV and control variables'],['Equipment','Full list with ranges'],['Method','Numbered steps anyone could repeat'],['Risk assessment','Hazard → risk → control'],['Results','Table with units in headers'],['Analysis','Calculations + graph + gradient'],['Conclusion','What the data shows'],['Evaluation','Accuracy, errors, improvements']].map(x=>`<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join('')}
+  </div>
+  <h3 style="margin-top:28px">Equipment used in each practical (for technicians)</h3>
+  <div class="tbl-wrap"><table class="matrix"><thead><tr><th>Item</th>${EXPS.map(e=>`<th>${e.title.replace(' (ice)','').replace(' (viscosity)','').replace('Specific ','Sp. ')}</th>`).join('')}</tr></thead><tbody>
+  ${allEquip.map(it => `<tr><td>${it}</td>${EXPS.map(e => `<td class="${uses(e,it)?'y':''}">${uses(e,it)?'✓':''}</td>`).join('')}</tr>`).join('')}
+  ${Object.keys(extras).map(x => `<tr class="extra"><td>${x} <small>(not on list)</small></td>${EXPS.map(e => `<td class="${extras[x].includes(e.id)?'y':''}">${extras[x].includes(e.id)?'✓':''}</td>`).join('')}</tr>`).join('')}
+  </tbody></table></div>
+  <p class="muted" style="font-size:.88rem">Items marked “not on list” are recommended extras. The latent heat practical needs two filter funnels to hold the ice.</p>`;
+}
+
+/* ============ steps ============ */
+function stepHTML(exp, step){
+  const s = st(exp.id);
+  const k = STEPS[step].k;
+  if (k === 'plan') return `
+    <h2>1. Aim and hypothesis</h2>
+    <div class="field"><label class="lbl">Aim</label>
+      <div class="guide"><h4>What to include</h4>${exp.aim.guide}</div>
+      <div class="starter">Sentence starter: ${exp.aim.starter}</div>
+      <textarea data-t="aim" placeholder="Write your aim here…">${esc(s.text.aim)}</textarea></div>
+    <div class="field"><label class="lbl">Hypothesis</label>
+      <div class="guide"><h4>What to include</h4>${exp.hyp.guide}<ul><li>A prediction (what will happen)</li><li>A <b>reason</b> using scientific ideas – this is what gets the higher marks</li></ul></div>
+      <div class="starter">Sentence starter: ${exp.hyp.starter}</div>
+      <textarea data-t="hyp" placeholder="Write your hypothesis here…">${esc(s.text.hyp)}</textarea></div>`;
+
+  if (k === 'vars') {
+    const checked = s.varsChecked;
+    return `
+    <h2>2. Variables</h2>
+    <div class="key-defs">
+      <div><b>Independent (IV)</b>The one thing you change on purpose.</div>
+      <div><b>Dependent (DV)</b>The thing you measure.</div>
+      <div><b>Control (CV)</b>Things you keep the same to make it a fair test.</div>
+    </div>
+    <p>Sort each variable, then press <b>Check my answers</b>. In your write-up, say <b>how</b> you will control each control variable and <b>why</b>.</p>
+    <table class="vars"><tbody>
+    ${exp.vars.map((v,i) => { const ans = s.vars[i] || ''; const cls = checked && ans ? (ans===v.t?'right':'wrong') : ''; return `<tr class="${cls}"><td><b>${v.n}</b>${checked?`<div class="why">${ans===v.t?'✓ Correct. ':ans?`✗ It is the <b>${v.t}</b>. `:`It is the <b>${v.t}</b>. `}${v.why}</div>`:''}</td><td style="width:150px"><select data-var="${i}"><option value="">Choose…</option>${['IV','DV','CV'].map(o=>`<option ${ans===o?'selected':''}>${o}</option>`).join('')}</select></td></tr>`; }).join('')}
+    </tbody></table>
+    <div class="row-btns"><button class="btn primary" data-act="checkvars">Check my answers</button>${checked?'<button class="btn" data-act="resetvars">Try again</button>':''}</div>`;
+  }
+
+  if (k === 'method') return `
+    <h2>3. Equipment and method</h2>
+    <h3>Equipment</h3>
+    <div class="equip">${exp.equip.map(q=>`<div><b>${q[0]}</b><span>${q[1]}</span></div>`).join('')}${exp.extras.map(q=>`<div class="extra"><b>${q[0]}</b><span>${q[1]} · <i>check availability</i></span></div>`).join('')}</div>
+    <h3>Method</h3>
+    <p class="muted">Tick each step as you do it in the lab.</p>
+    <ol class="method">${exp.method.map((m,i)=>`<li class="${s.method[i]?'done':''}"><label><input type="checkbox" data-meth="${i}" ${s.method[i]?'checked':''}><span>${m}</span></label></li>`).join('')}</ol>
+    <div class="field" style="margin-top:20px"><label class="lbl">Your method for the write-up</label>
+    <div class="guide"><h4>Writing your own method</h4><ul><li>Numbered steps, in your own words – don't copy the steps above word for word.</li><li>Include amounts and intervals (e.g. "add 100 g masses up to 800 g").</li><li>Say how readings were taken accurately (eye level, repeats, zeroing instruments).</li><li>Include a labelled diagram of the set-up in your report.</li></ul></div>
+    <textarea data-t="method" style="min-height:180px" placeholder="1. …">${esc(s.text.method)}</textarea></div>`;
+
+  if (k === 'risk') return `
+    <h2>4. Risk assessment</h2>
+    <div class="guide"><h4>How to write a risk assessment</h4>A <b>hazard</b> is something that could cause harm. The <b>risk</b> is the harm it could do. The <b>control measure</b> is what you do to reduce the risk. Present it as a table in your report – you can add any extra hazards you spot.</div>
+    <div class="tbl-wrap"><table class="risk"><thead><tr><th>Hazard</th><th>Risk (what could happen)</th><th>Control measure</th></tr></thead><tbody>
+    ${exp.risks.map(r=>`<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</tbody></table></div>
+    <div class="row-btns"><button class="btn" data-act="copyrisk">Copy risk table (for Word)</button></div>`;
+
+  if (k === 'results') return `
+    <h2>5. Results table</h2>
+    <div class="guide"><h4>Rules for a good results table</h4><ul>
+      <li>Headers show <b>quantity / unit</b> – units go in the header, never in the cells.</li>
+      <li>Independent variable in the first column, then the dependent variable (and repeats), then calculated columns.</li>
+      <li>Use the same number of decimal places down each column (match the resolution of the instrument).</li>
+      <li>Show at least one worked example of each calculation in your report.</li></ul></div>
+    <div class="legend"><span><i style="background:#fff"></i>you type</span><span><i style="background:#f3f1ea"></i>calculated automatically</span></div>
+    ${exp.tables.map((t,ti)=>tableHTML(exp,ti)).join('')}
+    ${exp.refData?`<h3>Data book densities</h3><div class="tbl-wrap"><table class="risk"><thead><tr><th>Material</th><th>Density / g/cm³</th></tr></thead><tbody>${exp.refData.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</tbody></table></div>`:''}`;
+
+  if (k === 'analysis') return analysisHTML(exp);
+
+  if (k === 'eval') return `
+    <h2>7. Conclusion and evaluation</h2>
+    ${resultSummary(exp)}
+    <div class="field"><label class="lbl">Conclusion</label>
+    <div class="guide"><h4>What to include</h4><ul><li>State what you found, quoting your final value(s) with units.</li><li>Describe the pattern or relationship shown by your graph.</li><li>Say whether your hypothesis was supported, and explain why using science.</li></ul></div>
+    <textarea data-t="concl" placeholder="My results show that…">${esc(s.text.concl)}</textarea></div>
+    <div class="field"><label class="lbl">Evaluation</label>
+    <div class="guide"><h4>Think about…</h4><ul>${exp.evalPrompts.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+    <div class="tip"><b>Key words:</b> <b>accurate</b> = close to the true value · <b>precise</b> = repeat readings close together · <b>repeatable</b> = same results when you repeat · <b>random error</b> = unpredictable scatter · <b>systematic error</b> = all readings shifted the same way (e.g. zero error) · <b>resolution</b> = smallest change an instrument can show.</div>
+    <textarea data-t="evalu" style="min-height:180px" placeholder="My results were accurate/precise because…">${esc(s.text.evalu)}</textarea></div>`;
+
+  if (k === 'check') {
+    const done = CHECK.filter((c,i)=>s.check[i]).length;
+    return `
+    <h2>8. Write-up checklist</h2>
+    <p>Tick each section once it is in your report. <b>${done}/${CHECK.length}</b> complete.</p>
+    <div class="bar" style="margin-bottom:16px"><span style="width:${done/CHECK.length*100}%"></span></div>
+    <div class="checklist">${CHECK.map((c,i)=>`<label class="${s.check[i]?'on':''}"><input type="checkbox" data-chk="${i}" ${s.check[i]?'checked':''}><div><b>${c[0]}</b><small>${c[1]}</small></div></label>`).join('')}</div>
+    <div class="row-btns"><button class="btn primary" data-act="copyall">Copy my write-up (paste into Word)</button><button class="btn" data-act="reset">Clear this practical</button></div>
+    <p class="muted" style="font-size:.88rem;margin-top:10px">The copied text includes your aim, hypothesis, variables, method, risk assessment, results tables, analysis and evaluation. Tables paste as tab-separated text – in Word use <i>Insert → Table → Convert Text to Table</i>, or paste them into Excel. You still need to draw your graph and add a diagram.</p>`;
+  }
+}
+
+/* ============ tables ============ */
+function headLabel(c){ return `${c.label}${c.unit?`<span class="u">/ ${c.unit}</span>`:''}`; }
+function tableHTML(exp, ti){
+  const td = exp.tables[ti], ts = tstate(exp, ti), comp = computeTable(td, ts);
+  const fitCol = exp.graph.type === 'scatter' && exp.graph.table === ti;
+  let h = `<div class="tbl-block"><h3>${td.title}</h3>`;
+  if (td.note) h += `<p class="muted" style="font-size:.9rem">${td.note}</p>`;
+  if (td.consts && td.consts.length){
+    h += '<div class="consts">';
+    td.consts.forEach(c => {
+      if (c.select) h += `<label>${c.label}<select data-const="${ti}|${c.key}">${c.select.map((o,j)=>`<option value="${j}" ${String(ts.consts[c.key]??0)==String(j)?'selected':''}>${o.label}</option>`).join('')}</select></label>`;
+      else h += `<label>${c.label}${c.unit?` / ${c.unit}`:''}<input type="text" inputmode="decimal" data-const="${ti}|${c.key}" value="${esc(ts.consts[c.key]??'')}"></label>`;
+    });
+    (td.deriveShow||[]).forEach(d => { h += `<div class="derived"><span>${d.label}${d.unit?` / ${d.unit}`:''}</span><b data-der="${ti}|${d.key}">${fmt(comp.C[d.key], d.dp) || '–'}</b></div>`; });
+    h += '</div>';
+  }
+  h += `<div class="tbl-wrap"><table class="res"><thead><tr>${td.cols.map(c=>`<th class="${c.calc?'calc-h':''}">${headLabel(c)}</th>`).join('')}${fitCol?'<th>Use in best-fit line?</th>':''}<th></th></tr></thead><tbody>`;
+  ts.rows.forEach((raw, ri) => {
+    h += '<tr>';
+    td.cols.forEach(c => {
+      if (c.calc) h += `<td class="calc" data-calc="${ti}|${ri}|${c.key}">${fmt(comp.rows[ri][c.key], c.dp)}</td>`;
+      else if (c.select) h += `<td><select data-cell="${ti}|${ri}|${c.key}">${c.select.map(o=>`<option ${raw[c.key]===o?'selected':''}>${o}</option>`).join('')}</select></td>`;
+      else h += `<td><input type="text" ${c.text?'':'inputmode="decimal"'} data-cell="${ti}|${ri}|${c.key}" value="${esc(raw[c.key]??'')}"></td>`;
+    });
+    if (fitCol) h += `<td><input type="checkbox" style="width:auto" data-inc="${ti}|${ri}" ${ts.inc[ri]===false?'':'checked'}></td>`;
+    h += `<td class="ctl"><button title="Delete row" data-act="delrow" data-t="${ti}" data-r="${ri}">×</button></td></tr>`;
+  });
+  h += `</tbody></table></div><div class="row-btns"><button class="btn small" data-act="addrow" data-t="${ti}">+ Add row</button><button class="btn small" data-act="copytable" data-t="${ti}">Copy table (for Excel / Word)</button></div></div>`;
+  return h;
+}
+function refreshCalcs(exp, ti){
+  const td = exp.tables[ti], comp = computeTable(td, tstate(exp, ti));
+  document.querySelectorAll(`[data-calc^="${ti}|"]`).forEach(el => { const [,ri,key] = el.dataset.calc.split('|'); const col = td.cols.find(c=>c.key===key); el.textContent = fmt(comp.rows[+ri]?.[key], col.dp); });
+  document.querySelectorAll(`[data-der^="${ti}|"]`).forEach(el => { const key = el.dataset.der.split('|')[1]; const d = td.deriveShow.find(x=>x.key===key); el.textContent = fmt(comp.C[key], d.dp) || '–'; });
+}
+function tableTSV(exp, ti){
+  const td = exp.tables[ti], ts = tstate(exp, ti), comp = computeTable(td, ts);
+  const lines = [td.title];
+  (td.consts||[]).forEach(c => lines.push(c.select ? `${c.label}\t${comp.C[c.key+'_label']}` : `${c.label} / ${c.unit}\t${ts.consts[c.key]??''}`));
+  (td.deriveShow||[]).forEach(d => lines.push(`${d.label} / ${d.unit}\t${fmt(comp.C[d.key], d.dp)}`));
+  lines.push(td.cols.map(c => c.unit ? `${c.label} / ${c.unit}` : c.label).join('\t'));
+  comp.rows.forEach((r, ri) => lines.push(td.cols.map(c => c.calc ? fmt(r[c.key], c.dp) : (ts.rows[ri][c.key] ?? (c.select?c.select[0]:''))).join('\t')));
+  return lines.join('\n');
+}
+
+/* ============ graphs ============ */
+function niceScale(min, max, n = 6){
+  if (min === max){ min -= 1; max += 1; }
+  const step0 = (max - min) / n, mag = 10 ** Math.floor(Math.log10(step0)), err = step0 / mag;
+  const step = (err >= 7.5 ? 10 : err >= 3.5 ? 5 : err >= 1.5 ? 2 : 1) * mag;
+  const lo = Math.floor(min / step + 1e-9) * step, hi = Math.ceil(max / step - 1e-9) * step;
+  const ticks = []; for (let v = lo; v <= hi + step / 2; v += step) ticks.push(+v.toPrecision(12));
+  return {lo, hi, ticks};
+}
+function expOf(ticks){ const m = Math.max(...ticks.map(Math.abs)); if (!m) return 0; const e = Math.floor(Math.log10(m)); return (e >= 4 || e <= -3) ? e : 0; }
+const tlab = (v, e) => String(+(v / 10 ** e).toPrecision(6));
+function linfit(pts){
+  const n = pts.length; if (n < 2) return null;
+  let sx=0, sy=0, sxx=0, sxy=0; pts.forEach(p => { sx+=p.x; sy+=p.y; sxx+=p.x*p.x; sxy+=p.x*p.y; });
+  const d = n*sxx - sx*sx; if (!d) return null;
+  const m = (n*sxy - sx*sy)/d, b = (sy - m*sx)/n, my = sy/n;
+  let ssr=0, sst=0; pts.forEach(p => { ssr += (p.y-(m*p.x+b))**2; sst += (p.y-my)**2; });
+  return {m, b, r2: sst ? 1 - ssr/sst : 1};
+}
+function axisLabel(lbl, e){ if (!e) return lbl; const i = lbl.indexOf(' / '); return i > -1 ? `${lbl.slice(0,i)} / ×10${sup(e)} ${lbl.slice(i+3)}` : `${lbl} / ×10${sup(e)}`; }
+function scatterSVG(pts, fit, g){
+  const W=680, H=440, ml=86, mr=24, mt=24, mb=66;
+  const xs = pts.map(p=>p.x), ys = pts.map(p=>p.y);
+  const X = niceScale(Math.min(0,...xs), Math.max(0,...xs)), Y = niceScale(Math.min(0,...ys), Math.max(0,...ys));
+  const sx = v => ml + (v-X.lo)/(X.hi-X.lo)*(W-ml-mr), sy = v => H-mb - (v-Y.lo)/(Y.hi-Y.lo)*(H-mt-mb);
+  const ex = expOf(X.ticks), ey = expOf(Y.ticks);
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(g.title)}"><defs><clipPath id="plotclip"><rect x="${ml}" y="${mt}" width="${W-ml-mr}" height="${H-mt-mb}"/></clipPath></defs>`;
+  X.ticks.forEach(t => { s += `<line x1="${sx(t)}" x2="${sx(t)}" y1="${mt}" y2="${H-mb}" stroke="#ece8de"/><text x="${sx(t)}" y="${H-mb+18}" text-anchor="middle" font-size="12" fill="#5b6374">${tlab(t,ex)}</text>`; });
+  Y.ticks.forEach(t => { s += `<line x1="${ml}" x2="${W-mr}" y1="${sy(t)}" y2="${sy(t)}" stroke="#ece8de"/><text x="${ml-8}" y="${sy(t)+4}" text-anchor="end" font-size="12" fill="#5b6374">${tlab(t,ey)}</text>`; });
+  s += `<line x1="${sx(0)}" x2="${sx(0)}" y1="${mt}" y2="${H-mb}" stroke="#1b2130" stroke-width="1.3"/><line x1="${ml}" x2="${W-mr}" y1="${sy(0)}" y2="${sy(0)}" stroke="#1b2130" stroke-width="1.3"/>`;
+  s += `<text x="${(ml+W-mr)/2}" y="${H-16}" text-anchor="middle" font-size="14" font-weight="700" fill="#1b2130">${esc(axisLabel(g.xlabel, ex))}</text>`;
+  s += `<text transform="translate(20 ${(mt+H-mb)/2}) rotate(-90)" text-anchor="middle" font-size="14" font-weight="700" fill="#1b2130">${esc(axisLabel(g.ylabel, ey))}</text>`;
+  if (fit) s += `<line clip-path="url(#plotclip)" x1="${sx(X.lo)}" y1="${sy(fit.m*X.lo+fit.b)}" x2="${sx(X.hi)}" y2="${sy(fit.m*X.hi+fit.b)}" stroke="var(--accent)" stroke-width="2.2" stroke-dasharray="7 5"/>`;
+  pts.forEach(p => { const x = sx(p.x), y = sy(p.y); s += p.inc ? `<path d="M${x-5} ${y-5}L${x+5} ${y+5}M${x-5} ${y+5}L${x+5} ${y-5}" stroke="#1b2130" stroke-width="2.2"/>` : `<circle cx="${x}" cy="${y}" r="6" fill="none" stroke="#c2410c" stroke-width="2"/><path d="M${x-4} ${y-4}L${x+4} ${y+4}M${x-4} ${y+4}L${x+4} ${y-4}" stroke="#aab" stroke-width="1.6"/>`; });
+  return s + '</svg>';
+}
+function barSVG(items, g){
+  const W=680, H=420, ml=86, mr=24, mt=24, mb=70;
+  const Y = niceScale(0, Math.max(...items.map(i=>i.v))); const ey = expOf(Y.ticks);
+  const sy = v => H-mb - (v-Y.lo)/(Y.hi-Y.lo)*(H-mt-mb);
+  const bw = (W-ml-mr)/items.length;
+  let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(g.title)}">`;
+  Y.ticks.forEach(t => { s += `<line x1="${ml}" x2="${W-mr}" y1="${sy(t)}" y2="${sy(t)}" stroke="#ece8de"/><text x="${ml-8}" y="${sy(t)+4}" text-anchor="end" font-size="12" fill="#5b6374">${tlab(t,ey)}</text>`; });
+  items.forEach((it, i) => { const x = ml + i*bw + bw*0.18, w = bw*0.64, y = sy(it.v);
+    s += `<rect x="${x}" y="${y}" width="${w}" height="${sy(0)-y}" rx="4" fill="var(--accent)" opacity=".85"/><text x="${x+w/2}" y="${y-6}" text-anchor="middle" font-size="12" font-weight="700" fill="#1b2130">${sig(it.v,3)}</text><text x="${x+w/2}" y="${H-mb+18}" text-anchor="middle" font-size="12" fill="#1b2130">${esc(String(it.l).slice(0,16))}</text>`; });
+  s += `<line x1="${ml}" x2="${W-mr}" y1="${sy(0)}" y2="${sy(0)}" stroke="#1b2130" stroke-width="1.3"/><line x1="${ml}" x2="${ml}" y1="${mt}" y2="${H-mb}" stroke="#1b2130" stroke-width="1.3"/>`;
+  s += `<text transform="translate(20 ${(mt+H-mb)/2}) rotate(-90)" text-anchor="middle" font-size="14" font-weight="700" fill="#1b2130">${esc(axisLabel(g.ylabel, ey))}</text>`;
+  return s + '</svg>';
+}
+function graphData(exp){
+  const g = exp.graph;
+  if (g.type === 'scatter'){
+    const ts = tstate(exp, g.table), comp = computeTable(exp.tables[g.table], ts);
+    const pts = comp.rows.map((r,i) => ({x:r[g.x], y:r[g.y], inc: ts.inc[i] !== false})).filter(p => isFinite(p.x) && isFinite(p.y));
+    const fit = linfit(pts.filter(p => p.inc));
+    return {pts, fit, C:comp.C};
+  }
+  const items = [];
+  g.sources.forEach(src => { const comp = computeTable(exp.tables[src.table], tstate(exp, src.table)); comp.rows.forEach(r => { if (isFinite(r[src.value]) && r[src.value] > 0) items.push({l: r[src.label] || '?', v: r[src.value]}); }); });
+  return {items};
+}
+function resultSummary(exp){
+  const g = exp.graph, d = graphData(exp);
+  if (g.type === 'scatter'){
+    if (!d.fit) return `<div class="tip">Enter at least two complete rows of results to see your calculated value here.</div>`;
+    const R = g.result(d.fit, d.C);
+    let h = `<div class="resultgrid"><div class="stat"><span>Gradient (computer best fit)</span><b>${sig(d.fit.m,3)}</b></div><div class="stat"><span>y-intercept</span><b>${sig(d.fit.b,3)}</b></div><div class="stat"><span>R² (how close to a straight line, 1 = perfect)</span><b>${d.fit.r2.toFixed(3)}</b></div>`;
+    h += `<div class="stat hl"><span>${R.label}</span><b>${sig(R.value,3)} ${R.unit}</b></div>`;
+    if (R.accepted){ const pd = Math.abs(R.value - R.accepted)/R.accepted*100; h += `<div class="stat"><span>Data book value</span><b>${sig(R.accepted,3)} ${R.unit}</b></div><div class="stat"><span>% difference</span><b>${isFinite(pd)?pd.toFixed(1)+'%':'–'}</b></div>`; }
+    return h + `</div><p class="muted" style="font-size:.88rem">${R.gradNote}. Use this to <b>check</b> your own hand-drawn gradient – in your report you must show your own working.</p>`;
+  }
+  if (!d.items.length) return `<div class="tip">Enter results to see your values here.</div>`;
+  const sorted = [...d.items].sort((a,b)=>b.v-a.v);
+  return `<div class="resultgrid">${sorted.map(i=>`<div class="stat"><span>${esc(i.l)}</span><b>${sig(i.v,3)}</b></div>`).join('')}</div><p class="muted" style="font-size:.88rem">Ordered from highest to lowest (${esc(g.ylabel)}).</p>`;
+}
+function analysisHTML(exp){
+  const g = exp.graph, d = graphData(exp);
+  let chart;
+  if (g.type === 'scatter') chart = d.pts.length ? scatterSVG(d.pts, d.fit, g) : `<div class="tip">Enter your results in step 5 to see your graph here.</div>`;
+  else chart = d.items.length ? barSVG(d.items, g) : `<div class="tip">Enter your results in step 5 to see your bar chart here.</div>`;
+  return `
+    <h2>6. Graph and analysis</h2>
+    <div class="guide"><h4>Graph to draw</h4><b>${g.title}</b><br>${g.type==='scatter'?`y-axis: <b>${g.ylabel}</b> · x-axis: <b>${g.xlabel}</b> · straight line of best fit`:`Bar chart · y-axis: <b>${g.ylabel}</b>`}</div>
+    <h3>What to do with your results</h3>
+    <ol class="steps-list">${exp.analysis.map(a=>`<li>${a}</li>`).join('')}</ol>
+    <h3>Preview of your graph</h3>
+    ${g.type==='scatter'?'<p class="muted" style="font-size:.9rem">× = point used in the best-fit line · ⊗ = point you have excluded (untick it in the results table, e.g. beyond the limit of proportionality or an anomaly).</p>':''}
+    ${chart}
+    ${resultSummary(exp)}
+    <div class="tip"><b>Drawing your graph by hand:</b> title · both axes labelled with quantity / unit · even scale using at least half the grid · points plotted as small crosses · a single smooth line or ruled straight line of best fit (not dot-to-dot) · anomalies circled · gradient triangle drawn large and shown on the graph.</div>`;
+}
+
+/* ============ write-up text ============ */
+function writeupText(exp){
+  const s = st(exp.id); const L = [];
+  L.push(exp.title.toUpperCase(), '');
+  L.push('AIM', s.text.aim || '[write your aim]', '');
+  L.push('HYPOTHESIS', s.text.hyp || '[write your hypothesis]', '');
+  L.push('VARIABLES');
+  ['IV','DV','CV'].forEach(t => { const nm = {IV:'Independent variable',DV:'Dependent variable',CV:'Control variables'}[t]; const items = exp.vars.filter((v,i)=>s.vars[i]===t).map(v=>v.n); L.push(`${nm}: ${items.length?items.join('; '):'[not yet sorted]'}`); });
+  L.push('');
+  L.push('EQUIPMENT', ...exp.equip.map(q=>`- ${q[0]}`), ...exp.extras.map(q=>`- ${q[0]}`), '');
+  L.push('METHOD', s.text.method || '[write your method in your own words]', '');
+  L.push('RISK ASSESSMENT', 'Hazard\tRisk\tControl measure', ...exp.risks.map(r=>r.join('\t')), '');
+  L.push('RESULTS'); exp.tables.forEach((t,ti)=>{ L.push(tableTSV(exp,ti), ''); });
+  L.push('ANALYSIS');
+  const g = exp.graph, d = graphData(exp);
+  L.push(`Graph: ${g.title}`);
+  if (g.type==='scatter' && d.fit){ const R = g.result(d.fit, d.C); L.push(`Gradient = ${sig(d.fit.m,3)}`, `${R.label} = ${sig(R.value,3)} ${R.unit}`); if (R.accepted) L.push(`Data book value = ${sig(R.accepted,3)} ${R.unit}; % difference = ${(Math.abs(R.value-R.accepted)/R.accepted*100).toFixed(1)}%`); }
+  if (g.type==='bar' && d.items.length) d.items.forEach(i=>L.push(`${i.l}: ${sig(i.v,3)}`));
+  L.push('[insert your graph and worked calculations]', '');
+  L.push('CONCLUSION', s.text.concl || '[write your conclusion]', '');
+  L.push('EVALUATION', s.text.evalu || '[write your evaluation]');
+  return L.join('\n');
+}
+
+/* ============ events ============ */
+const app = document.getElementById('app');
+function onField(e){
+  const exp = current(); if (!exp) return; const s = st(exp.id); const el = e.target;
+  if (el.dataset.t){ s.text[el.dataset.t] = el.value; save(); return; }
+  if (el.dataset.cell){ const [ti,ri,key] = el.dataset.cell.split('|'); tstate(exp,+ti).rows[+ri][key] = el.value; save(); refreshCalcs(exp,+ti); return; }
+  if (el.dataset.const){ const [ti,key] = el.dataset.const.split('|'); tstate(exp,+ti).consts[key] = el.value; save(); refreshCalcs(exp,+ti); return; }
+}
+app.addEventListener('input', onField);
+app.addEventListener('change', e => {
+  const exp = current(); if (!exp) return; const s = st(exp.id); const el = e.target;
+  if (el.dataset.cell || el.dataset.const){ onField(e); return; }
+  if (el.dataset.var !== undefined){ s.vars[el.dataset.var] = el.value; s.varsChecked = false; save(); render(); return; }
+  if (el.dataset.inc){ const [ti,ri] = el.dataset.inc.split('|'); tstate(exp,+ti).inc[+ri] = el.checked; save(); return; }
+  if (el.dataset.meth !== undefined){ s.method[el.dataset.meth] = el.checked; save(); el.closest('li').classList.toggle('done', el.checked); return; }
+  if (el.dataset.chk !== undefined){ s.check[el.dataset.chk] = el.checked; save(); render(); return; }
+});
+app.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const exp = current(); if (!exp) return; const s = st(exp.id); const act = b.dataset.act;
+  if (act === 'step'){ s.step = +b.dataset.s; save(); render(); document.querySelector('.layout')?.scrollIntoView({behavior:'smooth',block:'start'}); }
+  else if (act === 'checkvars'){ s.varsChecked = true; save(); render(); const right = exp.vars.filter((v,i)=>s.vars[i]===v.t).length; toast(`${right} / ${exp.vars.length} correct`); }
+  else if (act === 'resetvars'){ s.vars = {}; s.varsChecked = false; save(); render(); }
+  else if (act === 'addrow'){ const ts = tstate(exp,+b.dataset.t); ts.rows.push({}); save(); render(); }
+  else if (act === 'delrow'){ const ts = tstate(exp,+b.dataset.t); const r = +b.dataset.r; ts.rows.splice(r,1); ts.inc.splice(r,1); save(); render(); }
+  else if (act === 'copytable') copyText(tableTSV(exp,+b.dataset.t));
+  else if (act === 'copyrisk') copyText(['Hazard\tRisk\tControl measure', ...exp.risks.map(r=>r.join('\t'))].join('\n'));
+  else if (act === 'copyall') copyText(writeupText(exp));
+  else if (act === 'reset'){
+    if (b.dataset.confirm){ delete S[exp.id]; save(); render(); toast('Practical cleared'); }
+    else { b.dataset.confirm = '1'; b.textContent = 'Click again to clear everything'; b.style.color = 'var(--bad)'; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.confirm; b.textContent='Clear this practical'; b.style.color=''; } }, 4000); }
+  }
+});
+render();
+</script>
+</body>
+</html>
